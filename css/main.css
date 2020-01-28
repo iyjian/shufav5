@@ -1,0 +1,27 @@
+#pic {
+position:relative;
+}
+
+.hanzi {
+	position: relative;
+	width: 100px;
+	height: 120px;
+	border: 1px red solid;
+	float:left;
+}
+.who {
+	top: 80px;
+	left: 0px;
+	width: 100px;
+	height: 20px;
+	position: absolute;
+	z-index: 10;
+	background:white;
+}
+img {
+	top: 0px;
+	left: 0px;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+}

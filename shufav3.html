@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+		<title>市場部費用管理</title>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="data.js"></script>
+		<link type="text/css" href="css/main.css" rel="stylesheet" />
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				$('.submit').click(function() {
+
+					var junzi = $('#query').val().split("");
+
+					$('#pic').empty();
+
+					var viewtypearr = {
+						"只看行书" : "行书",
+						"只看草书" : "草书",
+						"只看隶书" : "隶书",
+						"只看篆书" : "篆书",
+						"只看楷书" : "楷书",
+						"点这儿看全部字体！！" : "全部"
+					};
+					var viewtype = viewtypearr[$(this).val()];
+					alert(viewtype);
+					for(index in junzi ) {
+						var hanzi = junzi[index];
+						var hanzilength = 0;
+						//找到这个字体的长度
+						
+						for(i in data[hanzi]) {if(data[hanzi][i][0] == viewtype){hanzilength++;}}
+						randselectindex = Math.round(Math.random() * hanzilength);
+						var i_viewtype=0;
+						for(i in data[hanzi]) {
+							$imgscript = '<div class="hanzi"> <img src = "_IMG_"> <div class="who">_WHO_<\/div> <\/div>';
+							$imgscript = $imgscript.replace(/_IMG_/, data[hanzi][i][2])
+							$imgscript = $imgscript.replace(/_WHO_/, data[hanzi][i][0] + ":" + data[hanzi][i][1]);
+							//if(data[hanzi][i][0]==viewtype||viewtype=="全部") {
+							//$('#pic').append($imgscript);
+							//}
+							if(data[hanzi][i][0] == viewtype){i_viewtype++;}
+							if((data[hanzi][i][0] == viewtype && randselectindex == i_viewtype) || viewtype == "全部" ) {
+								$('#pic').append($imgscript);
+							}
+						}
+
+					}
+
+				})
+			});
+
+		</script>
+
+	</head>
+	<body>
+		<p>
+			<input type="text" id="query" >
+			<input type="submit" value="点这儿看全部字体！！"  class="submit">
+			<input type="submit" value="只看行书"  class="submit">
+			<input type="submit" value="只看草书"  class="submit">
+			<input type="submit" value="只看楷书"  class="submit">
+			<input type="submit" value="只看隶书"  class="submit">
+		</p>
+		<div id="pic">
+
+		</div>
+	</body>
+</html>
+
