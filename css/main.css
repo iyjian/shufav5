@@ -6,8 +6,8 @@ position:relative;
 	position: relative;
 	width: 100px;
 	height: 120px;
-	border: 1px red solid;
-	float:left;
+  float:left;
+  margin-right: 1px;
 }
 .who {
 	top: 80px;
@@ -16,7 +16,9 @@ position:relative;
 	height: 20px;
 	position: absolute;
 	z-index: 10;
-	background:white;
+  background:white;
+  padding-left: 5px;
+  text-align: center;
 }
 img {
 	top: 0px;
